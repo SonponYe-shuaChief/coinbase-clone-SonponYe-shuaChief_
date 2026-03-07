@@ -8,3 +8,8 @@ plan of action is to first
 4. find the needed mock data to use 
 5. especially in home screen
 6. download all needed assets and label them correctly
+
+
+if there is time
+1. add animation when needed
+2. perfect css.
