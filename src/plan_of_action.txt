@@ -1,0 +1,10 @@
+// 
+since you have little time to complete this since you magically wasted it,
+plan of action is to first 
+
+1. create structure 
+2. get basic page structure down
+3. break down needed components
+4. find the needed mock data to use 
+5. especially in home screen
+6. download all needed assets and label them correctly
