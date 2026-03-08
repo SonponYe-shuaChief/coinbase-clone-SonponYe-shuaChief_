@@ -5,7 +5,10 @@ import heroPhoneDashboard from "../assets/images/imgi_33_Hero__4_.png";
 import learnPromoImage from "../assets/images/imgi_39_CB_LOLP__1_.png";
 import advancedToolsCard from "../assets/images/imgi_53_Advanced.png";
 import coinbaseOneRewards from "../assets/images/imgi_54_zero_fees_us.png";
-import baseAppMobile from "../assets/images/base-app-mobile.svg";
+import baseAppEarnWays from "../assets/images/countless ways to earn crypto with base app image.png";
+import usdcDigitalImage from "../assets/images/USDC the digital image.webp";
+import canCryptoReplaceBankImage from "../assets/images/can crypto replace you rbacnk account.png";
+import bestTimeInvestCryptoImage from "../assets/images/best time to invest in crypto.png";
 
 function Home() {
 	const market = cryptoData.slice(0, 6);
@@ -15,21 +18,21 @@ function Home() {
 			title: "USDC: The digital dollar for the global crypto economy",
 			description:
 				"Coinbase believes crypto will be part of the solution for creating an open financial system.",
-			image: learnPromoImage,
+			image: usdcDigitalImage,
 		},
 		{
 			id: "bank-account",
 			title: "Can crypto really replace your bank account?",
 			description:
 				"If you're a big enough fan of crypto, you've probably heard the phrase 'be your own bank'.",
-			image: coinbaseOneRewards,
+			image: canCryptoReplaceBankImage,
 		},
 		{
 			id: "invest-time",
 			title: "When is the best time to invest in crypto?",
 			description:
 				"Cryptocurrencies like Bitcoin can experience daily volatility, as with any investment.",
-			image: advancedToolsCard,
+			image: bestTimeInvestCryptoImage,
 		},
 	];
 
@@ -157,7 +160,7 @@ function Home() {
 					<div className="grid items-center gap-7 md:grid-cols-2">
 						<div className="order-2 overflow-hidden rounded-3xl bg-slate-100 md:order-1">
 							<img
-								src={baseAppMobile}
+								src={baseAppEarnWays}
 								alt="Base app mobile preview"
 								className="h-52 w-full object-cover"
 							/>
@@ -231,16 +234,8 @@ function Home() {
 						</form>
 					</div>
 
-					<div className="mx-auto w-full max-w-[420px]">
-						<div className="relative mx-auto h-[290px] w-[290px]">
-							<div className="absolute left-[102px] top-0 grid h-[84px] w-[84px] place-items-center rounded-full bg-[#0a0f1e] text-4xl font-semibold text-white">A</div>
-							<div className="absolute left-0 top-[58px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#1652f0] text-5xl font-semibold text-white">C</div>
-							<div className="absolute right-0 top-[58px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#f5cd00] text-4xl font-semibold text-[#0a0b0d]">→</div>
-							<div className="absolute left-[102px] top-[82px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#f7931a] text-4xl font-semibold text-white">B</div>
-							<div className="absolute left-6 top-[138px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#bda32f] text-4xl font-semibold text-white">D</div>
-							<div className="absolute right-6 top-[138px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#1744bf] text-4xl font-semibold text-white">●</div>
-							<div className="absolute left-[102px] top-[188px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#627eea] text-4xl font-semibold text-white">E</div>
-						</div>
+					<div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+						<img src={learnPromoImage} alt="Cryptocurrency asset cluster" className="h-[290px] w-full object-cover" />
 					</div>
 				</div>
 				<div className="mx-auto w-full max-w-[1240px] px-4 pb-12 lg:px-8">
