@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="520" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+  <title id="title">Coinbase One mobile placeholder</title>
+  <desc id="desc">Stylized mobile card illustration placeholder.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="720" height="520" fill="url(#bg)" rx="40" />
+  <rect x="250" y="48" width="220" height="424" rx="40" fill="#ffffff" stroke="#cbd5e1" />
+  <circle cx="360" cy="126" r="54" fill="#1652f0" />
+  <path d="M338 126l16 16 30-30" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="286" y="212" width="148" height="16" rx="8" fill="#cbd5e1" />
+  <rect x="286" y="248" width="122" height="16" rx="8" fill="#dbeafe" />
+  <rect x="286" y="284" width="148" height="16" rx="8" fill="#cbd5e1" />
+  <rect x="286" y="320" width="96" height="16" rx="8" fill="#dbeafe" />
+  <text x="360" y="452" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#475569">coinbase-one-mobile.svg</text>
+</svg>

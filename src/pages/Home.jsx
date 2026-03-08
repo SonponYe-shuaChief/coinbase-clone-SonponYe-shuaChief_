@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 import { cryptoData } from "../data/cryptoData";
+import heroPhoneDashboard from "../assets/images/imgi_33_Hero__4_.png";
+import learnPromoImage from "../assets/images/imgi_39_CB_LOLP__1_.png";
+import advancedToolsCard from "../assets/images/imgi_53_Advanced.png";
+import coinbaseOneRewards from "../assets/images/imgi_54_zero_fees_us.png";
+import baseAppMobile from "../assets/images/base-app-mobile.svg";
 
 function Home() {
 	const market = cryptoData.slice(0, 6);
@@ -10,11 +15,12 @@ function Home() {
 			<div className="mx-auto grid w-full max-w-[1240px] gap-8 px-4 pb-16 pt-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-10 lg:px-8">
 				<div className="order-2 lg:order-1">
 					<div className="rounded-[36px] bg-gradient-to-br from-blue-700 to-blue-950 p-4 sm:p-6">
-						<div className="grid min-h-[520px] place-items-center rounded-[28px] border border-blue-200/25 bg-white/90 text-center text-slate-500">
-							<div>
-								<p className="text-xs font-semibold uppercase tracking-[0.2em]">Image Placeholder</p>
-								<p className="mt-2 text-lg font-semibold text-slate-700">hero-phone-dashboard.png</p>
-							</div>
+						<div className="overflow-hidden rounded-[28px] border border-blue-200/25 bg-white/90">
+							<img
+								src={heroPhoneDashboard}
+								alt="Coinbase mobile dashboard"
+								className="h-[520px] w-full object-cover"
+							/>
 						</div>
 					</div>
 				</div>
@@ -87,9 +93,12 @@ function Home() {
 			<div className="mx-auto w-full max-w-[1240px] px-4 py-16 lg:px-8">
 				<div className="mx-auto grid max-w-[900px] gap-12">
 					<div className="grid items-center gap-7 md:grid-cols-2">
-						<div className="min-h-52 rounded-3xl bg-slate-950 p-4 text-slate-200">
-							<p className="text-xs font-semibold uppercase tracking-[0.2em]">Image Placeholder</p>
-							<p className="mt-2 text-sm">advanced-tools-card.png</p>
+						<div className="overflow-hidden rounded-3xl bg-slate-950">
+							<img
+								src={advancedToolsCard}
+								alt="Advanced trading tools preview"
+								className="h-52 w-full object-cover"
+							/>
 						</div>
 						<div>
 							<h3 className="text-5xl font-semibold tracking-tight text-slate-950">Powerful tools, designed for the advanced trader.</h3>
@@ -113,16 +122,22 @@ function Home() {
 								Claim free trial
 							</button>
 						</div>
-						<div className="min-h-52 rounded-3xl bg-slate-100 p-4 text-slate-500">
-							<p className="text-xs font-semibold uppercase tracking-[0.2em]">Image Placeholder</p>
-							<p className="mt-2 text-sm">coinbase-one-mobile.png</p>
+						<div className="overflow-hidden rounded-3xl bg-slate-100">
+							<img
+								src={coinbaseOneRewards}
+								alt="Coinbase One mobile benefits"
+								className="h-52 w-full object-cover"
+							/>
 						</div>
 					</div>
 
 					<div className="grid items-center gap-7 md:grid-cols-2">
-						<div className="order-2 min-h-52 rounded-3xl bg-slate-100 p-4 text-slate-500 md:order-1">
-							<p className="text-xs font-semibold uppercase tracking-[0.2em]">Image Placeholder</p>
-							<p className="mt-2 text-sm">base-app-mobile.png</p>
+						<div className="order-2 overflow-hidden rounded-3xl bg-slate-100 md:order-1">
+							<img
+								src={baseAppMobile}
+								alt="Base app mobile preview"
+								className="h-52 w-full object-cover"
+							/>
 						</div>
 						<div className="order-1 md:order-2">
 							<p className="inline-block rounded-full border border-slate-200 px-2 py-0.5 text-xs font-semibold text-slate-500">BASE APP</p>
@@ -152,6 +167,13 @@ function Home() {
 						<Link to="/learn" className="mt-4 inline-flex">
 							<Button className="rounded-full bg-slate-950 px-6 py-2 text-sm hover:bg-slate-800">Read More</Button>
 						</Link>
+						<div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white">
+							<img
+								src={learnPromoImage}
+								alt="Learn and earn promo"
+								className="h-44 w-full object-cover"
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
