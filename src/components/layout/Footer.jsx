@@ -1,34 +1,61 @@
 function Footer() {
+  const columns = [
+    {
+      title: "Company",
+      links: ["About", "Careers", "Affiliates", "Blog", "Press", "Security", "Investors", "Vendors", "Legal & privacy"],
+    },
+    {
+      title: "Individuals",
+      links: ["Buy & sell", "Earn free crypto", "Base App", "Coinbase One", "Debit Card"],
+    },
+    {
+      title: "Businesses",
+      links: ["Asset Listings", "Coinbase Business", "Payments", "Commerce", "Prime"],
+    },
+    {
+      title: "Developers",
+      links: ["Developer Platform", "Base", "Server Wallets", "Wallet SDK", "Onramp & Offramp", "Node"],
+    },
+    {
+      title: "Support",
+      links: ["Help center", "Contact us", "Create account", "ID verification", "Account information", "Status"],
+    },
+    {
+      title: "Learn",
+      links: ["Explore", "Market statistics", "Crypto basics", "Tips & tutorials", "Market updates", "What is Bitcoin?"],
+    },
+  ];
+
   return (
-    <footer className="border-t border-slate-200 bg-white">
-      <div className="mx-auto grid w-full max-w-[1240px] gap-8 px-4 py-12 text-sm text-slate-600 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
-        <div>
-          <p className="text-base font-semibold text-slate-900">Coinbase</p>
-          <p className="mt-2">{new Date().getFullYear()} Coinbase clone.</p>
+    <footer className="border-t border-slate-200 bg-[#e5e8ed]">
+      <div className="mx-auto w-full max-w-[1240px] px-4 py-10 lg:px-8">
+        <div className="mb-8 grid h-10 w-10 place-items-center rounded-full bg-[#1652f0] text-2xl font-black text-white">C</div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
+          {columns.map((column) => (
+            <div key={column.title}>
+              <p className="text-sm font-semibold text-slate-900">{column.title}</p>
+              <ul className="mt-2 space-y-1.5 text-xs text-slate-600">
+                {column.links.map((link) => (
+                  <li key={link} className="hover:text-slate-800">
+                    {link}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <div>
-          <p className="font-semibold text-slate-900">Company</p>
-          <ul className="mt-2 space-y-1">
-            <li>About</li>
-            <li>Careers</li>
-            <li>Affiliates</li>
-          </ul>
+
+        <div className="mt-8 flex items-center gap-4 text-slate-500">
+          <span className="text-xs">X</span>
+          <span className="text-xs">in</span>
+          <span className="text-xs">IG</span>
+          <span className="text-xs">t</span>
         </div>
-        <div>
-          <p className="font-semibold text-slate-900">Products</p>
-          <ul className="mt-2 space-y-1">
-            <li>Exchange</li>
-            <li>Wallet</li>
-            <li>Learn</li>
-          </ul>
-        </div>
-        <div>
-          <p className="font-semibold text-slate-900">Support</p>
-          <ul className="mt-2 space-y-1">
-            <li>Help center</li>
-            <li>Contact us</li>
-            <li>Status</li>
-          </ul>
+
+        <div className="mt-6 flex flex-col gap-3 border-t border-slate-300 pt-4 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Coinbase • Privacy • Terms & Conditions</p>
+          <p>Global • English</p>
         </div>
       </div>
     </footer>

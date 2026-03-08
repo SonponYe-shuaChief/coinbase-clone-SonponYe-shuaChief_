@@ -9,6 +9,29 @@ import baseAppMobile from "../assets/images/base-app-mobile.svg";
 
 function Home() {
 	const market = cryptoData.slice(0, 6);
+	const learnCards = [
+		{
+			id: "usdc",
+			title: "USDC: The digital dollar for the global crypto economy",
+			description:
+				"Coinbase believes crypto will be part of the solution for creating an open financial system.",
+			image: learnPromoImage,
+		},
+		{
+			id: "bank-account",
+			title: "Can crypto really replace your bank account?",
+			description:
+				"If you're a big enough fan of crypto, you've probably heard the phrase 'be your own bank'.",
+			image: coinbaseOneRewards,
+		},
+		{
+			id: "invest-time",
+			title: "When is the best time to invest in crypto?",
+			description:
+				"Cryptocurrencies like Bitcoin can experience daily volatility, as with any investment.",
+			image: advancedToolsCard,
+		},
+	];
 
 	return (
 		<section>
@@ -154,27 +177,76 @@ function Home() {
 			</div>
 
 			<div className="bg-[#e5e8ed]">
-				<div className="mx-auto grid w-full max-w-[1240px] gap-8 px-4 py-12 lg:grid-cols-2 lg:px-8">
-					<h3 className="max-w-[600px] text-5xl font-semibold leading-tight tracking-tight text-slate-950">
-						New to crypto?
-						<br />
-						Learn some crypto basics
-					</h3>
-					<div>
-						<p className="max-w-[460px] text-slate-600">
-							Beginner guides, practical tips, and market updates for first-timers, experienced investors, and everyone in between.
-						</p>
-						<Link to="/learn" className="mt-4 inline-flex">
-							<Button className="rounded-full bg-slate-950 px-6 py-2 text-sm hover:bg-slate-800">Read More</Button>
-						</Link>
-						<div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white">
-							<img
-								src={learnPromoImage}
-								alt="Learn and earn promo"
-								className="h-44 w-full object-cover"
-							/>
+				<div className="mx-auto w-full max-w-[1240px] px-4 py-12 lg:px-8">
+					<div className="grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:items-start">
+						<h3 className="max-w-[480px] text-5xl font-semibold leading-tight tracking-tight text-slate-950">
+							New to crypto?
+							<br />
+							Learn some crypto basics
+						</h3>
+						<div>
+							<p className="max-w-[500px] text-base text-slate-600">
+								Beginner guides, practical tips, and market updates for first-timers, experienced investors, and everyone in between.
+							</p>
+							<Link to="/learn" className="mt-4 inline-flex">
+								<Button className="rounded-full bg-slate-950 px-6 py-2 text-sm hover:bg-slate-800">Read More</Button>
+							</Link>
 						</div>
 					</div>
+
+					<div className="mt-6 grid gap-4 md:grid-cols-3">
+						{learnCards.map((card) => (
+							<article key={card.id} className="rounded-2xl">
+								<div className="overflow-hidden rounded-2xl border border-slate-300/70 bg-white">
+									<img src={card.image} alt={card.title} className="h-32 w-full object-cover" />
+								</div>
+								<h4 className="mt-3 text-[31px] font-medium leading-[1.05] tracking-[-0.01em] text-slate-950">
+									{card.title}
+								</h4>
+								<p className="mt-2 text-xs leading-5 text-slate-600">{card.description}</p>
+							</article>
+						))}
+					</div>
+				</div>
+			</div>
+
+			<div className="bg-white">
+				<div className="mx-auto grid w-full max-w-[1240px] gap-10 px-4 py-16 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-8">
+					<div>
+						<h3 className="max-w-[520px] text-6xl font-semibold leading-[0.97] tracking-tight text-slate-950 sm:text-7xl">
+							Take control
+							<br />
+							of your money
+						</h3>
+						<p className="mt-3 text-sm text-slate-600">Start your portfolio today and discover crypto</p>
+						<form className="mt-4 flex max-w-[460px] flex-col gap-3 sm:flex-row" onSubmit={(event) => event.preventDefault()}>
+							<input
+								type="email"
+								placeholder="satoshi@nakamoto.com"
+								className="h-12 w-full rounded-md border border-slate-300 px-3 text-sm text-slate-900 outline-none ring-[#1652f0] placeholder:text-slate-400 focus:ring-2"
+							/>
+							<Link to="/signup" className="inline-flex">
+								<Button className="h-12 rounded-full px-7 text-sm">Sign up</Button>
+							</Link>
+						</form>
+					</div>
+
+					<div className="mx-auto w-full max-w-[420px]">
+						<div className="relative mx-auto h-[290px] w-[290px]">
+							<div className="absolute left-[102px] top-0 grid h-[84px] w-[84px] place-items-center rounded-full bg-[#0a0f1e] text-4xl font-semibold text-white">A</div>
+							<div className="absolute left-0 top-[58px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#1652f0] text-5xl font-semibold text-white">C</div>
+							<div className="absolute right-0 top-[58px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#f5cd00] text-4xl font-semibold text-[#0a0b0d]">→</div>
+							<div className="absolute left-[102px] top-[82px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#f7931a] text-4xl font-semibold text-white">B</div>
+							<div className="absolute left-6 top-[138px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#bda32f] text-4xl font-semibold text-white">D</div>
+							<div className="absolute right-6 top-[138px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#1744bf] text-4xl font-semibold text-white">●</div>
+							<div className="absolute left-[102px] top-[188px] grid h-[84px] w-[84px] place-items-center rounded-full bg-[#627eea] text-4xl font-semibold text-white">E</div>
+						</div>
+					</div>
+				</div>
+				<div className="mx-auto w-full max-w-[1240px] px-4 pb-12 lg:px-8">
+					<p className="mx-auto max-w-[900px] text-center text-[10px] leading-5 text-slate-400">
+						DNC trading is offered by Coinbase Derivatives LLC, a CFTC-regulated futures commission merchant. Products and features may not be available in all regions.
+					</p>
 				</div>
 			</div>
 		</section>
