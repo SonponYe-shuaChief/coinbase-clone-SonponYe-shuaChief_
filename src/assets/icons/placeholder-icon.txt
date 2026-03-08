@@ -1,0 +1,4 @@
+Drop project icon files here, for example:
+- btc-icon.svg
+- eth-icon.svg
+- app-logo.svg
