@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Button from "../common/Button";
+import coinbaseLogo from "../../assets/images/coinbase logo.png";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -18,9 +19,7 @@ function Navbar() {
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-[1240px] items-center justify-between px-4 py-2.5 lg:px-8">
         <Link to="/" className="flex items-center gap-2" aria-label="Coinbase home">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-[#1652f0] text-xl font-black text-white">
-            C
-          </span>
+          <img src={coinbaseLogo} alt="Coinbase" className="h-9 w-9 object-contain" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">

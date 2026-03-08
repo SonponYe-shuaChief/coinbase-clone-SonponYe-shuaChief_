@@ -13,3 +13,6 @@ plan of action is to first
 if there is time
 1. add animation when needed
 2. perfect css.
+
+
+USE AI if and when necessary cause it will be

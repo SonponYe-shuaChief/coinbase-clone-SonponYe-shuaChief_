@@ -122,7 +122,7 @@ function Home() {
 							<img
 								src={advancedToolsCard}
 								alt="Advanced trading tools preview"
-								className="h-52 w-full object-cover"
+								className="h-64 w-full object-cover"
 							/>
 						</div>
 						<div>
@@ -151,7 +151,7 @@ function Home() {
 							<img
 								src={coinbaseOneRewards}
 								alt="Coinbase One mobile benefits"
-								className="h-52 w-full object-cover"
+								className="h-64 w-full object-cover"
 							/>
 						</div>
 					</div>
@@ -161,7 +161,7 @@ function Home() {
 							<img
 								src={baseAppEarnWays}
 								alt="Base app mobile preview"
-								className="h-52 w-full object-cover"
+								className="h-64 w-full object-cover"
 							/>
 						</div>
 						<div className="order-1 md:order-2">
@@ -200,7 +200,7 @@ function Home() {
 						{learnCards.map((card) => (
 							<article key={card.id} className="rounded-2xl">
 								<div className="overflow-hidden rounded-2xl border border-slate-300/70 bg-white">
-									<img src={card.image} alt={card.title} className="h-32 w-full object-cover" />
+									<img src={card.image} alt={card.title} className="h-44 w-full object-cover" />
 								</div>
 								<h4 className="mt-3 text-[31px] font-medium leading-[1.05] tracking-[-0.01em] text-slate-950">
 									{card.title}

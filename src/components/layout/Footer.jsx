@@ -1,3 +1,5 @@
+import coinbaseLogo from "../../assets/images/coinbase logo.png";
+
 function Footer() {
   const columns = [
     {
@@ -29,7 +31,7 @@ function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-[#e5e8ed]">
       <div className="mx-auto w-full max-w-[1240px] px-4 py-10 lg:px-8">
-        <div className="mb-8 grid h-10 w-10 place-items-center rounded-full bg-[#1652f0] text-2xl font-black text-white">C</div>
+        <img src={coinbaseLogo} alt="Coinbase" className="mb-8 h-10 w-10 object-contain" />
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
           {columns.map((column) => (
