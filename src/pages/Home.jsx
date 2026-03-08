@@ -41,14 +41,12 @@ function Home() {
 		<section>
 			<div className="mx-auto grid w-full max-w-[1240px] gap-8 px-4 pb-16 pt-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-10 lg:px-8">
 				<div className="order-2 lg:order-1">
-					<div className="rounded-[36px] bg-gradient-to-br from-blue-700 to-blue-950 p-4 sm:p-6">
-						<div className="overflow-hidden rounded-[28px] border border-blue-200/25 bg-white/90">
-							<img
-								src={heroPhoneDashboard}
-								alt="Coinbase mobile dashboard"
-								className="h-[520px] w-full object-cover"
-							/>
-						</div>
+					<div className="overflow-hidden rounded-[28px] bg-white shadow-sm">
+						<img
+							src={heroPhoneDashboard}
+							alt="Coinbase mobile dashboard"
+							className="h-[520px] w-full object-cover"
+						/>
 					</div>
 				</div>
 
