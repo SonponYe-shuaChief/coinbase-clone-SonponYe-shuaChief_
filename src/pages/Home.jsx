@@ -9,6 +9,7 @@ import baseAppEarnWays from "../assets/images/countless ways to earn crypto with
 import usdcDigitalImage from "../assets/images/USDC the digital image.webp";
 import canCryptoReplaceBankImage from "../assets/images/can crypto replace you rbacnk account.png";
 import bestTimeInvestCryptoImage from "../assets/images/best time to invest in crypto.png";
+import TakeControl from "../assets/images/take control of your money image.png";
 
 function Home() {
 	const market = cryptoData.slice(0, 6);
@@ -235,7 +236,7 @@ function Home() {
 					</div>
 
 					<div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
-						<img src={learnPromoImage} alt="Cryptocurrency asset cluster" className="h-[290px] w-full object-cover" />
+						<img src={TakeControl} alt="Cryptocurrency asset cluster" className="h-[290px] w-full object-cover" />
 					</div>
 				</div>
 				<div className="mx-auto w-full max-w-[1240px] px-4 pb-12 lg:px-8">
