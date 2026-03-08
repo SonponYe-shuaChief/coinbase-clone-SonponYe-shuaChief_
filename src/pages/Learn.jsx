@@ -4,6 +4,7 @@ import usdcDigitalImage from "../assets/images/USDC the digital image.webp";
 import advancedToolsCard from "../assets/images/imgi_53_Advanced.png";
 import learnPromoImage from "../assets/images/imgi_39_CB_LOLP__1_.png";
 import baseAppEarnWays from "../assets/images/countless ways to earn crypto with base app image.png";
+import coinbaseOneRewards from "../assets/images/imgi_54_zero_fees_us.png";
 
 function SectionHeader({ title, subtitle }) {
   return (
@@ -94,6 +95,40 @@ function Learn() {
 		{ image: advancedToolsCard, kicker: "Advanced guide", title: "How can I use crypto futures market data for spot trading?" },
 		{ image: baseAppEarnWays, kicker: "Advanced guide", title: "How to read advanced trading charts" },
 		{ image: learnPromoImage, kicker: "Key term", title: "What is an order book?" },
+	];
+
+	const futuresCards = [
+		{ image: advancedToolsCard, title: "Futures: Introductions and origins" },
+		{ image: learnPromoImage, title: "Futures fundamentals: Understanding the basics" },
+		{ image: canCryptoReplaceBankImage, title: "Opening, holding, and closing a position in the futures market" },
+		{ image: bestTimeInvestCryptoImage, title: "Trading strategies: Speculating, hedging, and spreading in the futures market" },
+	];
+
+	const walletCards = [
+		{
+			image: usdcDigitalImage,
+			kicker: "",
+			title: "What's the difference between Coinbase and Coinbase Wallet?",
+			description: "And how can a wallet help me access NFTs or DeFi? Your self-custody wallet questions, answered.",
+		},
+		{
+			image: baseAppEarnWays,
+			kicker: "Video tutorial",
+			title: "How to set up a crypto wallet",
+			description: "Learn how to setup and get started with a crypto wallet.",
+		},
+		{
+			image: coinbaseOneRewards,
+			kicker: "Getting started",
+			title: "How to add crypto to your Coinbase Wallet",
+			description: "A quick guide on how to add crypto to your Coinbase self-custody wallet.",
+		},
+		{
+			image: bestTimeInvestCryptoImage,
+			kicker: "",
+			title: "How to send or receive crypto using Coinbase Wallet",
+			description: "Coinbase Wallet helps you unlock one of the most significant features of crypto: peer-to-peer transfers.",
+		},
 	];
 
 	return (
@@ -203,6 +238,50 @@ function Learn() {
 					<div className="mt-7 text-center">
 						<button type="button" className="rounded-sm bg-[#1652f0] px-4 py-2 text-sm font-semibold text-white">
 							See more advanced trading
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div className="border-t border-slate-200 bg-white py-12">
+				<div className="mx-auto w-full max-w-[1240px] px-4 lg:px-8">
+					<SectionHeader title="Futures" subtitle="New to futures trading? Get up to speed on the basics." />
+					<div className="mx-auto grid max-w-[780px] gap-5 md:grid-cols-2">
+						{futuresCards.map((card) => (
+							<article key={card.title}>
+								<div className="overflow-hidden rounded-sm bg-slate-200">
+									<img src={card.image} alt={card.title} className="h-[170px] w-full object-cover" />
+								</div>
+								<h3 className="mt-2 text-[32px] font-semibold leading-tight tracking-tight text-slate-950">{card.title}</h3>
+							</article>
+						))}
+					</div>
+					<div className="mt-7 text-center">
+						<button type="button" className="rounded-sm bg-[#1652f0] px-4 py-2 text-sm font-semibold text-white">
+							See more about futures
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div className="border-t border-slate-200 bg-white py-12">
+				<div className="mx-auto w-full max-w-[1240px] px-4 lg:px-8">
+					<SectionHeader title="All Things Wallet" subtitle="Earn yield, dive into crypto apps, control your holdings, and much more" />
+					<div className="mx-auto grid max-w-[780px] gap-5 md:grid-cols-2">
+						{walletCards.map((card) => (
+							<article key={card.title}>
+								<div className="overflow-hidden rounded-sm bg-slate-200">
+									<img src={card.image} alt={card.title} className="h-[170px] w-full object-cover" />
+								</div>
+								{card.kicker ? <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400">{card.kicker}</p> : null}
+								<h3 className="mt-1 text-[32px] font-semibold leading-tight tracking-tight text-slate-950">{card.title}</h3>
+								<p className="mt-1 text-sm leading-6 text-slate-600">{card.description}</p>
+							</article>
+						))}
+					</div>
+					<div className="mt-7 text-center">
+						<button type="button" className="rounded-sm bg-[#1652f0] px-4 py-2 text-sm font-semibold text-white">
+							See more Wallet articles
 						</button>
 					</div>
 				</div>
