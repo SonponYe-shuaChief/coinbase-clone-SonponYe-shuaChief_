@@ -1,42 +1,68 @@
 import { useState } from "react";
-import Button from "../components/common/Button";
-import Input from "../components/common/Input";
+import { Link } from "react-router-dom";
 
 function SignIn() {
 	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
 
 	function handleSubmit(event) {
 		event.preventDefault();
 	}
 
 	return (
-		<section className="mx-auto w-full max-w-md px-4 py-10">
-			<div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-				<h1 className="text-2xl font-bold text-slate-900">Sign In</h1>
-				<p className="mt-1 text-sm text-slate-600">Welcome back. Enter your details.</p>
-				<form className="mt-5 space-y-4" onSubmit={handleSubmit}>
-					<Input
+		<section className="mx-auto flex min-h-screen w-full max-w-[560px] items-start px-5 py-14 sm:items-center">
+			<div className="w-full">
+				<h1 className="text-5xl font-semibold tracking-tight text-white">Sign in to Coinbase</h1>
+				<form className="mt-8" onSubmit={handleSubmit}>
+					<label htmlFor="signin-email" className="block text-sm font-semibold text-white">
+						Email
+					</label>
+					<input
 						id="signin-email"
-						label="Email"
 						type="email"
-						placeholder="you@example.com"
+						placeholder="Your email address"
 						value={email}
 						onChange={(event) => setEmail(event.target.value)}
 						required
+						className="mt-2 h-16 w-full rounded-2xl border border-[#2b3548] bg-transparent px-5 text-3xl font-medium text-white placeholder:text-slate-500 outline-none ring-[#2f63f2] focus:ring-2"
 					/>
-					<Input
-						id="signin-password"
-						label="Password"
-						type="password"
-						placeholder="Enter your password"
-						value={password}
-						onChange={(event) => setPassword(event.target.value)}
-						required
-					/>
-					<Button type="submit" className="w-full">
-						Sign In
-					</Button>
+
+					<button
+						type="submit"
+						className="mt-6 h-16 w-full rounded-full bg-[#2f4a85] text-3xl font-semibold text-[#0b1225] transition hover:bg-[#385696]"
+					>
+						Continue
+					</button>
+
+					<div className="mt-7 flex items-center gap-4 text-xl text-slate-400">
+						<div className="h-px flex-1 bg-[#2b3548]" />
+						<span>OR</span>
+						<div className="h-px flex-1 bg-[#2b3548]" />
+					</div>
+
+					<div className="mt-7 space-y-4">
+						<button type="button" className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white">
+							Sign in with Passkey
+						</button>
+						<button type="button" className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white">
+							Sign in with Google
+						</button>
+						<button type="button" className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white">
+							Sign in with Apple
+						</button>
+					</div>
+
+					<p className="mt-9 text-center text-2xl font-semibold text-white">
+						Don't have an account? {" "}
+						<Link to="/signup" className="text-[#2f63f2]">
+							Sign up
+						</Link>
+					</p>
+
+					<p className="mt-8 text-center text-lg text-slate-500">
+						Not your device? Use a private window. See our Privacy Policy for more info.
+					</p>
+
+					<p className="mt-10 text-center text-4xl font-medium text-[#2f63f2]">Cancel signing in</p>
 				</form>
 			</div>
 		</section>
