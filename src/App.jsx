@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp";
 
 function App() {
   const { pathname } = useLocation();
+  // Auth pages intentionally hide global nav/footer to match Coinbase's focused flows.
   const isAuthRoute = pathname === "/signin" || pathname === "/signup";
 
   return (

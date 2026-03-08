@@ -6,6 +6,7 @@ function SignIn() {
 
 	function handleSubmit(event) {
 		event.preventDefault();
+		// Placeholder until real auth is connected.
 	}
 
 	return (

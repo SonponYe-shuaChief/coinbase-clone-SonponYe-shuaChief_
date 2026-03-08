@@ -6,6 +6,7 @@ function SignUp() {
 
 	function handleSubmit(event) {
 		event.preventDefault();
+		// Placeholder until real registration is connected.
 	}
 
 	return (

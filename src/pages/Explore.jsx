@@ -8,6 +8,7 @@ function Sparkline({ points, color = "#ef4444", height = 28 }) {
 	const min = Math.min(...points);
 	const span = max - min || 1;
 
+	// Normalize points into SVG coordinates so every mini-chart scales to its own range.
 	const polyline = points
 		.map((point, index) => {
 			const x = (index / (points.length - 1)) * width;
@@ -33,6 +34,7 @@ function Sparkline({ points, color = "#ef4444", height = 28 }) {
 function Explore() {
 	const [search, setSearch] = useState("");
 
+	// Derive table rows from the search query while keeping original data immutable.
 	const filteredCoins = useMemo(() => {
 		const query = search.trim().toLowerCase();
 		return cryptoData.filter(
@@ -42,6 +44,7 @@ function Explore() {
 		);
 	}, [search]);
 
+	// Right-rail "Top movers" uses absolute move size so large gainers/losers both surface.
 	const topMovers = useMemo(() => {
 		return [...cryptoData]
 			.sort((a, b) => Math.abs(b.change24h) - Math.abs(a.change24h))
