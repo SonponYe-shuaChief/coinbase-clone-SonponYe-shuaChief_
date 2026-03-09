@@ -5,6 +5,12 @@ import advancedToolsCard from "../assets/images/imgi_53_Advanced.png";
 import learnPromoImage from "../assets/images/imgi_39_CB_LOLP__1_.png";
 import baseAppEarnWays from "../assets/images/countless ways to earn crypto with base app image.png";
 import coinbaseOneRewards from "../assets/images/imgi_54_zero_fees_us.png";
+import featuredSectionImage from "../assets/images/featured section image.png";
+import cryptoBasicsImg1 from "../assets/images/crypto basics img1.webp";
+import cryptoBasicsImg2 from "../assets/images/crypto basics img2.png";
+import cryptoBasicsImg3 from "../assets/images/crypto basics img3.png";
+import cryptoBasicsImg4 from "../assets/images/crypto basics img4.jpg";
+import cryptoBasicsImg5 from "../assets/images/crypto basics img5.jpg";
 
 function SectionHeader({ title, subtitle }) {
   return (
@@ -44,14 +50,14 @@ function Learn() {
 
 	const cryptoBasicsLarge = [
 		{
-			image: bestTimeInvestCryptoImage,
+			image: cryptoBasicsImg1,
 			kicker: "Beginner's guide",
 			title: "What is Bitcoin?",
 			description:
 				"Bitcoin is the world's first widely adopted cryptocurrency and allows secure peer-to-peer transactions.",
 		},
 		{
-			image: usdcDigitalImage,
+			image: cryptoBasicsImg2,
 			kicker: "Beginner's guide",
 			title: "Guide to DeFi tokens and altcoins",
 			description: "From Aave to Zcash, decide what to trade with our beginner's guide.",
@@ -59,9 +65,9 @@ function Learn() {
 	];
 
 	const cryptoBasicsSmall = [
-		{ image: canCryptoReplaceBankImage, kicker: "Beginner's guide", title: "What is Ethereum?" },
-		{ image: learnPromoImage, kicker: "Key term", title: "What is DeFi?" },
-		{ image: baseAppEarnWays, kicker: "Beginner's guide", title: "What is a stablecoin?" },
+		{ image: cryptoBasicsImg3, kicker: "Beginner's guide", title: "What is Ethereum?" },
+		{ image: cryptoBasicsImg4, kicker: "Key term", title: "What is DeFi?" },
+		{ image: cryptoBasicsImg5, kicker: "Beginner's guide", title: "What is a stablecoin?" },
 		{ image: advancedToolsCard, kicker: "Glossary", title: "FOMO or you'll end up REKT - crypto slang, explained" },
 	];
 
@@ -143,7 +149,7 @@ function Learn() {
 					<div>
 						<p className="mb-2 text-xs font-semibold text-slate-500">Featured</p>
 						<LearnCard
-							image={bestTimeInvestCryptoImage}
+							image={featuredSectionImage}
 							kicker="Video tutorial"
 							title="When is the best time to invest in crypto?"
 							description="When prices are fluctuating, how do you know when to buy? Learn more about using dollar-cost averaging."
