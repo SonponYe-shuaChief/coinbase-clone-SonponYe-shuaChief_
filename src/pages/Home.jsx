@@ -10,6 +10,7 @@ import usdcDigitalImage from "../assets/images/USDC the digital image.webp";
 import canCryptoReplaceBankImage from "../assets/images/can crypto replace you rbacnk account.png";
 import bestTimeInvestCryptoImage from "../assets/images/best time to invest in crypto.png";
 import TakeControl from "../assets/images/take control of your money image.png";
+import feature from "../assets/images/featured section image.png";
 
 function Home() {
 	const market = cryptoData.slice(0, 6);
