@@ -12,6 +12,7 @@ import {
   WalletIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import navigationUpsellImage from "../../../assets/images/imgi_2_navigation-upsell.png";
 
 const leftColumn = [
   { title: "Buy and sell", description: "Buy, sell, and use crypto", icon: BanknotesIcon },
@@ -76,10 +77,8 @@ function IndividualsDropdown() {
         </div>
 
         <aside className="grid content-start gap-5">
-          <div className="grid h-40 w-40 place-items-center rounded-3xl bg-gradient-to-br from-[#0b4dff] via-[#0a67ff] to-[#0130aa] p-3">
-            <div className="grid h-24 w-24 place-items-center rounded-2xl bg-[#073ad9] text-6xl font-black text-white shadow-[inset_0_0_24px_rgba(255,255,255,0.3)]">
-              C
-            </div>
+          <div className="overflow-hidden rounded-3xl">
+            <img src={navigationUpsellImage} alt="Navigation upsell" className="h-40 w-40 object-cover" />
           </div>
           <div>
             <p className="text-5xl font-semibold leading-[1.06] tracking-tight text-slate-900">
