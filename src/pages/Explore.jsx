@@ -1,6 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { cryptoApi, normalizeCryptoCollection } from "../api/client";
 import { cryptoData } from "../data/cryptoData";
+import useCryptoData from "../hooks/useCryptoData";
 
 function Sparkline({ points, color = "#ef4444", height = 28 }) {
 	const width = 92;
@@ -33,22 +35,61 @@ function Sparkline({ points, color = "#ef4444", height = 28 }) {
 
 function Explore() {
 	const [search, setSearch] = useState("");
+	const [gainers, setGainers] = useState([]);
+	const [newCoins, setNewCoins] = useState([]);
+	const allCoins = useCryptoData("", "price");
 
 	// Derive table rows from the search query while keeping original data immutable.
 	const filteredCoins = useMemo(() => {
 		const query = search.trim().toLowerCase();
-		return cryptoData.filter(
+		return allCoins.filter(
 			(coin) =>
 				coin.name.toLowerCase().includes(query) ||
 				coin.symbol.toLowerCase().includes(query)
 		);
-	}, [search]);
+	}, [allCoins, search]);
 
 	// Right-rail "Top movers" uses absolute move size so large gainers/losers both surface.
 	const topMovers = useMemo(() => {
-		return [...cryptoData]
+		const source = gainers.length > 0 ? gainers : allCoins;
+		return [...source]
 			.sort((a, b) => Math.abs(b.change24h) - Math.abs(a.change24h))
 			.slice(0, 2);
+	}, [allCoins, gainers]);
+
+	useEffect(() => {
+		let active = true;
+
+		async function loadSidebarData() {
+			try {
+				const [gainersResponse, newResponse] = await Promise.all([
+					cryptoApi.getGainers(),
+					cryptoApi.getNew(),
+				]);
+
+				if (!active) {
+					return;
+				}
+
+				const normalizedGainers = normalizeCryptoCollection(gainersResponse);
+				const normalizedNewCoins = normalizeCryptoCollection(newResponse);
+
+				setGainers(normalizedGainers.length > 0 ? normalizedGainers : cryptoData.slice(0, 2));
+				setNewCoins(normalizedNewCoins.length > 0 ? normalizedNewCoins : []);
+			} catch (error) {
+				if (active) {
+					setGainers(cryptoData.slice(0, 2));
+					setNewCoins([]);
+				}
+				console.error("Failed to load explore sidebar data", error);
+			}
+		}
+
+		loadSidebarData();
+
+		return () => {
+			active = false;
+		};
 	}, []);
 
 	const statsCards = [
@@ -277,14 +318,19 @@ function Explore() {
 					<article className="rounded-xl border border-slate-200 bg-slate-50 p-3">
 						<h3 className="text-sm font-semibold text-slate-800">New on Coinbase</h3>
 						<div className="mt-2 space-y-2">
-							<div className="rounded-lg bg-white p-2">
-								<p className="text-xs font-semibold text-slate-900">HYPE</p>
-								<p className="text-[11px] text-slate-500">Hyperliquid Added Feb 5</p>
-							</div>
-							<div className="rounded-lg bg-white p-2">
-								<p className="text-xs font-semibold text-slate-900">JUPITER</p>
-								<p className="text-[11px] text-slate-500">Jupiter Added Dec 9</p>
-							</div>
+								{newCoins.length > 0 ? (
+									newCoins.slice(0, 2).map((coin) => (
+										<div key={coin.id} className="rounded-lg bg-white p-2">
+											<p className="text-xs font-semibold text-slate-900">{coin.symbol.toUpperCase()}</p>
+											<p className="text-[11px] text-slate-500">Added recently on Coinbase</p>
+										</div>
+									))
+								) : (
+									<div className="rounded-lg bg-white p-2">
+										<p className="text-xs font-semibold text-slate-900">Loading</p>
+										<p className="text-[11px] text-slate-500">Fetching new listings</p>
+									</div>
+								)}
 						</div>
 					</article>
 				</aside>

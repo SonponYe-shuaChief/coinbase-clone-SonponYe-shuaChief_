@@ -1,11 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 import Button from "../components/common/Button";
 import PriceChart from "../components/crypto/PriceChart";
-import { cryptoData } from "../data/cryptoData";
+import useCryptoData from "../hooks/useCryptoData";
 
 function AssetDetail() {
 	const { assetId } = useParams();
-	const asset = cryptoData.find((coin) => coin.id === assetId);
+	const assets = useCryptoData("", "price");
+	const asset = assets.find((coin) => coin.id === assetId);
 
 	if (!asset) {
 		return (

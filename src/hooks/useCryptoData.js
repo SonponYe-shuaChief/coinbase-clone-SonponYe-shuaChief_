@@ -1,12 +1,40 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { cryptoData } from "../data/cryptoData";
+import { cryptoApi, normalizeCryptoCollection } from "../api/client";
 
 function useCryptoData(search, sortBy) {
+  const [coins, setCoins] = useState(cryptoData);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadCoins() {
+      try {
+        const data = await cryptoApi.getAll();
+        if (active) {
+          const normalized = normalizeCryptoCollection(data);
+          setCoins(normalized.length > 0 ? normalized : cryptoData);
+        }
+      } catch (error) {
+        if (active) {
+          setCoins(cryptoData);
+        }
+        console.error("Failed to load crypto assets", error);
+      }
+    }
+
+    loadCoins();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return useMemo(() => {
     const normalized = search.trim().toLowerCase();
 
     // Filter by name or ticker symbol for a Coinbase-like asset search experience.
-    const filtered = cryptoData.filter((coin) => {
+    const filtered = coins.filter((coin) => {
       return (
         coin.name.toLowerCase().includes(normalized) ||
         coin.symbol.toLowerCase().includes(normalized)
@@ -25,7 +53,7 @@ function useCryptoData(search, sortBy) {
     });
 
     return sorted;
-  }, [search, sortBy]);
+  }, [coins, search, sortBy]);
 }
 
 export default useCryptoData;

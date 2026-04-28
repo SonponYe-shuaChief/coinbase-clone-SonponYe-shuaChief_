@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
-import { cryptoData } from "../data/cryptoData";
+import useCryptoData from "../hooks/useCryptoData";
 import heroPhoneDashboard from "../assets/images/imgi_33_Hero__4_.png";
 import learnPromoImage from "../assets/images/imgi_39_CB_LOLP__1_.png";
 import advancedToolsCard from "../assets/images/imgi_53_Advanced.png";
@@ -13,7 +13,7 @@ import TakeControl from "../assets/images/take control of your money image.png";
 import feature from "../assets/images/featured section image.png";
 
 function Home() {
-	const market = cryptoData.slice(0, 6);
+	const market = useCryptoData("", "price").slice(0, 6);
 	const learnCards = [
 		{
 			id: "usdc",

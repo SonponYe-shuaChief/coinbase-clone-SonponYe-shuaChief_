@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import coinbaseLogo from "../../assets/images/coinbase logo.png";
 import BusinessDropDown from "./navBarSections/BusinessDropDown";
 import CompanyDropdown from "./navBarSections/CompanyDropdown";
@@ -16,6 +17,7 @@ import IndividualsDropdown from "./navBarSections/IndividualsDropdown";
 import InstitutionsDropdown from "./navBarSections/InstitutionsDropdown";
 
 const NavBar = () => {
+  const { user, signOut } = useAuth();
   const [activeItem, setActiveItem] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileMenuLevel, setMobileMenuLevel] = useState("main");
@@ -571,19 +573,36 @@ const NavBar = () => {
             <GlobeEuropeAfricaIcon className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
-          <Link
-            to="/signin"
-            className="hidden md:inline-block bg-gray-200 py-2 px-4 md:px-6 font-bold rounded-full hover:bg-gray-300 transition-colors text-sm md:text-base text-center text-gray-800 hover:text-blue-600"
-          >
-            Sign In
-          </Link>
+          {user ? (
+            <>
+              <div className="hidden md:block rounded-full bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-700">
+                {user.name || user.email}
+              </div>
+              <button
+                type="button"
+                onClick={signOut}
+                className="bg-blue-600 text-white font-bold py-2 px-4 md:px-6 rounded-full hover:bg-blue-700 transition-colors text-sm md:text-base"
+              >
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/signin"
+                className="hidden md:inline-block bg-gray-200 py-2 px-4 md:px-6 font-bold rounded-full hover:bg-gray-300 transition-colors text-sm md:text-base text-center text-gray-800 hover:text-blue-600"
+              >
+                Sign In
+              </Link>
 
-          <Link
-            to="/signup"
-            className="bg-blue-600 text-white font-bold py-2 px-4 md:px-6 rounded-full hover:bg-blue-700 transition-colors text-sm md:text-base"
-          >
-            Sign Up
-          </Link>
+              <Link
+                to="/signup"
+                className="bg-blue-600 text-white font-bold py-2 px-4 md:px-6 rounded-full hover:bg-blue-700 transition-colors text-sm md:text-base"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
 
           <button
             type="button"
