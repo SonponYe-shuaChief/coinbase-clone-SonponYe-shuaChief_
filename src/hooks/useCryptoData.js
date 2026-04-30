@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { cryptoData } from "../data/cryptoData";
 import { cryptoApi, normalizeCryptoCollection } from "../api/client";
 
 function useCryptoData(search, sortBy) {
-  const [coins, setCoins] = useState(cryptoData);
+  const [coins, setCoins] = useState([]);
 
   useEffect(() => {
     let active = true;
@@ -13,11 +12,11 @@ function useCryptoData(search, sortBy) {
         const data = await cryptoApi.getAll();
         if (active) {
           const normalized = normalizeCryptoCollection(data);
-          setCoins(normalized.length > 0 ? normalized : cryptoData);
+          setCoins(normalized.length > 0 ? normalized : []);
         }
       } catch (error) {
         if (active) {
-          setCoins(cryptoData);
+          setCoins([]);
         }
         console.error("Failed to load crypto assets", error);
       }

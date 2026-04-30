@@ -102,6 +102,7 @@ export const authApi = {
     body: JSON.stringify(payload),
   }),
   profile: () => api("/auth/profile"),
+  logout: () => api("/auth/logout", { method: "POST" }),
 };
 
 export const cryptoApi = {

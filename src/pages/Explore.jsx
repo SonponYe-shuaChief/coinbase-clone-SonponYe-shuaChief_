@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { cryptoApi, normalizeCryptoCollection } from "../api/client";
-import { cryptoData } from "../data/cryptoData";
 import useCryptoData from "../hooks/useCryptoData";
 
 function Sparkline({ points, color = "#ef4444", height = 28 }) {
@@ -74,11 +73,11 @@ function Explore() {
 				const normalizedGainers = normalizeCryptoCollection(gainersResponse);
 				const normalizedNewCoins = normalizeCryptoCollection(newResponse);
 
-				setGainers(normalizedGainers.length > 0 ? normalizedGainers : cryptoData.slice(0, 2));
+				setGainers(normalizedGainers.length > 0 ? normalizedGainers : []);
 				setNewCoins(normalizedNewCoins.length > 0 ? normalizedNewCoins : []);
 			} catch (error) {
 				if (active) {
-					setGainers(cryptoData.slice(0, 2));
+					setGainers([]);
 					setNewCoins([]);
 				}
 				console.error("Failed to load explore sidebar data", error);

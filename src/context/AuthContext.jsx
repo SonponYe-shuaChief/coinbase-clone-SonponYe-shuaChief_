@@ -35,7 +35,15 @@ export function AuthProvider({ children }) {
     await refreshUser();
   };
 
-  const signOut = () => {
+  const signOut = async () => {
+    try {
+      if (authApi && typeof authApi.logout === "function") {
+        await authApi.logout();
+      }
+    } catch (e) {
+      console.warn("logout failed", e);
+    }
+
     setUser(null);
   };
 

@@ -7,7 +7,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/solid";
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import coinbaseLogo from "../../assets/images/coinbase logo.png";
 import BusinessDropDown from "./navBarSections/BusinessDropDown";
@@ -18,6 +18,7 @@ import InstitutionsDropdown from "./navBarSections/InstitutionsDropdown";
 
 const NavBar = () => {
   const { user, signOut } = useAuth();
+  const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileMenuLevel, setMobileMenuLevel] = useState("main");
@@ -580,7 +581,14 @@ const NavBar = () => {
               </div>
               <button
                 type="button"
-                onClick={signOut}
+                onClick={async () => {
+                  try {
+                    await signOut();
+                  } catch (e) {
+                    console.warn(e);
+                  }
+                  navigate("/");
+                }}
                 className="bg-blue-600 text-white font-bold py-2 px-4 md:px-6 rounded-full hover:bg-blue-700 transition-colors text-sm md:text-base"
               >
                 Sign Out
