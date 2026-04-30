@@ -9,6 +9,7 @@ function SignUp() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
+	const [notice, setNotice] = useState("");
 	const [submitting, setSubmitting] = useState(false);
 
 	useEffect(() => {
@@ -20,6 +21,7 @@ function SignUp() {
 	async function handleSubmit(event) {
 		event.preventDefault();
 		setError("");
+		setNotice("");
 		setSubmitting(true);
 
 		try {
@@ -30,6 +32,11 @@ function SignUp() {
 		} finally {
 			setSubmitting(false);
 		}
+	}
+
+	function handleUnsupportedSignUp(provider) {
+		setError("");
+		setNotice(`${provider} sign-up is not enabled in this coursework demo. Use the form fields below to create a test account.`);
 	}
 
 	if (loading) {
@@ -50,6 +57,7 @@ function SignUp() {
 					Use only test or classroom credentials here.
 				</p>
 				<form className="mt-8" onSubmit={handleSubmit}>
+					{notice ? <p className="mb-4 rounded-2xl border border-sky-500/40 bg-sky-500/10 px-4 py-3 text-sm text-sky-200">{notice}</p> : null}
 					{error ? <p className="mb-4 rounded-2xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">{error}</p> : null}
 					<label htmlFor="signup-name" className="block text-sm font-semibold text-white">
 						Name
@@ -105,10 +113,10 @@ function SignUp() {
 					</div>
 
 					<div className="mt-7 space-y-4">
-						<button type="button" className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white">
+						<button type="button" onClick={() => handleUnsupportedSignUp("Google")} className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white transition hover:bg-[#323846]">
 							Sign up with Google
 						</button>
-						<button type="button" className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white">
+						<button type="button" onClick={() => handleUnsupportedSignUp("Apple")} className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white transition hover:bg-[#323846]">
 							Sign up with Apple
 						</button>
 					</div>

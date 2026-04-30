@@ -8,6 +8,7 @@ function SignIn() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
+	const [notice, setNotice] = useState("");
 	const [submitting, setSubmitting] = useState(false);
 
 	useEffect(() => {
@@ -19,6 +20,7 @@ function SignIn() {
 	async function handleSubmit(event) {
 		event.preventDefault();
 		setError("");
+		setNotice("");
 		setSubmitting(true);
 
 		try {
@@ -29,6 +31,11 @@ function SignIn() {
 		} finally {
 			setSubmitting(false);
 		}
+	}
+
+	function handleUnsupportedSignIn(provider) {
+		setError("");
+		setNotice(`${provider} sign-in is not enabled in this coursework demo. Use email and password to continue.`);
 	}
 
 	if (loading) {
@@ -48,6 +55,7 @@ function SignIn() {
 					Use only test or classroom credentials here.
 				</p>
 				<form className="mt-8" onSubmit={handleSubmit}>
+					{notice ? <p className="mb-4 rounded-2xl border border-sky-500/40 bg-sky-500/10 px-4 py-3 text-sm text-sky-200">{notice}</p> : null}
 					{error ? <p className="mb-4 rounded-2xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">{error}</p> : null}
 					<label htmlFor="signin-email" className="block text-sm font-semibold text-white">
 						Email
@@ -90,13 +98,13 @@ function SignIn() {
 					</div>
 
 					<div className="mt-7 space-y-4">
-						<button type="button" className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white">
+						<button type="button" onClick={() => handleUnsupportedSignIn("Passkey")} className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white transition hover:bg-[#323846]">
 							Sign in with Passkey
 						</button>
-						<button type="button" className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white">
+						<button type="button" onClick={() => handleUnsupportedSignIn("Google")} className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white transition hover:bg-[#323846]">
 							Sign in with Google
 						</button>
-						<button type="button" className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white">
+						<button type="button" onClick={() => handleUnsupportedSignIn("Apple")} className="h-16 w-full rounded-full bg-[#2a2f3a] px-6 text-2xl font-semibold text-white transition hover:bg-[#323846]">
 							Sign in with Apple
 						</button>
 					</div>
@@ -112,7 +120,11 @@ function SignIn() {
 						Not your device? Use a private window. See our Privacy Policy for more info.
 					</p>
 
-					<p className="mt-10 text-center text-4xl font-medium text-[#2f63f2]">Cancel signing in</p>
+					<p className="mt-10 text-center text-4xl font-medium text-[#2f63f2]">
+						<Link to="/" className="inline-flex items-center justify-center">
+							Cancel signing in
+						</Link>
+					</p>
 				</form>
 			</div>
 		</section>
