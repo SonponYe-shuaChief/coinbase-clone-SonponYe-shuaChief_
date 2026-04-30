@@ -45,6 +45,10 @@ function SignUp() {
 			<div className="w-full">
 				<h1 className="text-5xl font-semibold tracking-tight text-white">Create your account</h1>
 				<p className="mt-4 text-3xl text-slate-400">Access all that Coinbase has to offer with a single account.</p>
+				<p className="mt-4 rounded-2xl border border-[#2b3548] bg-white/5 px-4 py-3 text-sm leading-6 text-slate-300">
+					Educational demo only. This page is part of a student project and is not affiliated with Coinbase.
+					Use only test or classroom credentials here.
+				</p>
 				<form className="mt-8" onSubmit={handleSubmit}>
 					{error ? <p className="mb-4 rounded-2xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">{error}</p> : null}
 					<label htmlFor="signup-name" className="block text-sm font-semibold text-white">

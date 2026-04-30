@@ -55,6 +55,15 @@ function Footer() {
           <span className="text-xs">t</span>
         </div>
 
+        <div className="mt-6 rounded-2xl border border-slate-300 bg-white/40 px-4 py-3 text-xs text-slate-600">
+          <p className="font-semibold text-slate-700">Educational project notice</p>
+          <p className="mt-1 leading-5">
+            This site is a student-built clone for coursework and portfolio demonstration only. It is not
+            affiliated with, endorsed by, or operated by Coinbase Global, Inc. No user data, credentials, or
+            funds on this site should be treated as official Coinbase services.
+          </p>
+        </div>
+
         <div className="mt-6 flex flex-col gap-3 border-t border-slate-300 pt-4 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Coinbase • Privacy • Terms & Conditions</p>
           <p>Global • English</p>

@@ -43,6 +43,10 @@ function SignIn() {
 		<section className="mx-auto flex min-h-screen w-full max-w-[560px] items-start px-5 py-14 sm:items-center">
 			<div className="w-full">
 				<h1 className="text-5xl font-semibold tracking-tight text-white">Sign in to Coinbase</h1>
+				<p className="mt-4 rounded-2xl border border-[#2b3548] bg-white/5 px-4 py-3 text-sm leading-6 text-slate-300">
+					Educational demo only. This page is part of a student project and is not affiliated with Coinbase.
+					Use only test or classroom credentials here.
+				</p>
 				<form className="mt-8" onSubmit={handleSubmit}>
 					{error ? <p className="mb-4 rounded-2xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">{error}</p> : null}
 					<label htmlFor="signin-email" className="block text-sm font-semibold text-white">
