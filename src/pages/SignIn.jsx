@@ -116,14 +116,10 @@ function SignIn() {
 						</Link>
 					</p>
 
-					<p className="mt-8 text-center text-lg text-slate-500">
-						Not your device? Use a private window. See our Privacy Policy for more info.
-					</p>
-
-					<p className="mt-10 text-center text-4xl font-medium text-[#2f63f2]">
-						<Link to="/" className="inline-flex items-center justify-center">
-							Cancel signing in
-						</Link>
+					<p className="mt-8 text-center text-xs text-slate-500">
+						Not your device? Use a private window. See our{" "}
+						<a href="#" className="text-[#2f63f2] hover:underline">Privacy Policy</a>
+						{" "}for more info.
 					</p>
 				</form>
 			</div>

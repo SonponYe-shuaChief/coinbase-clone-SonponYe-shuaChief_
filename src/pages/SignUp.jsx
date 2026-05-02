@@ -51,7 +51,7 @@ function SignUp() {
 		<section className="mx-auto flex min-h-screen w-full max-w-[560px] items-start px-5 py-14 sm:items-center">
 			<div className="w-full">
 				<h1 className="text-5xl font-semibold tracking-tight text-white">Create your account</h1>
-				<p className="mt-4 text-3xl text-slate-400">Access all that Coinbase has to offer with a single account.</p>
+				<p className="mt-4 text-xl text-slate-400">Access all that Coinbase has to offer with a single account.</p>
 				<p className="mt-4 rounded-2xl border border-[#2b3548] bg-white/5 px-4 py-3 text-sm leading-6 text-slate-300">
 					Educational demo only. This page is part of a student project and is not affiliated with Coinbase.
 					Use only test or classroom credentials here.
@@ -59,19 +59,6 @@ function SignUp() {
 				<form className="mt-8" onSubmit={handleSubmit}>
 					{notice ? <p className="mb-4 rounded-2xl border border-sky-500/40 bg-sky-500/10 px-4 py-3 text-sm text-sky-200">{notice}</p> : null}
 					{error ? <p className="mb-4 rounded-2xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">{error}</p> : null}
-					<label htmlFor="signup-name" className="block text-sm font-semibold text-white">
-						Name
-					</label>
-					<input
-						id="signup-name"
-						type="text"
-						placeholder="Your name"
-						value={name}
-						onChange={(event) => setName(event.target.value)}
-						required
-						className="mt-2 h-16 w-full rounded-2xl border border-[#2b3548] bg-transparent px-5 text-3xl font-medium text-white placeholder:text-slate-500 outline-none ring-[#2f63f2] focus:ring-2"
-					/>
-
 					<label htmlFor="signup-email" className="block text-sm font-semibold text-white">
 						Email
 					</label>
@@ -126,6 +113,13 @@ function SignUp() {
 						<Link to="/signin" className="text-[#2f63f2]">
 							Sign in
 						</Link>
+					</p>
+
+					<p className="mt-8 text-center text-xs text-slate-400 leading-5">
+						By creating an account you certify that you are over the age of 18 and agree to our{" "}
+						<a href="#" className="text-[#2f63f2] hover:underline">Privacy Policy</a>
+						{" "}and{" "}
+						<a href="#" className="text-[#2f63f2] hover:underline">Cookie Policy</a>.
 					</p>
 				</form>
 			</div>
