@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
+import WarningBanner from "./components/common/WarningBanner";
 import AssetDetail from "./pages/AssetDetail";
 import Explore from "./pages/Explore";
 import Home from "./pages/Home";
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div className={`min-h-screen ${isAuthRoute ? "bg-[#060b16] text-white" : "bg-white text-slate-950"}`}>
+      <WarningBanner />
       {!isAuthRoute ? <Navbar /> : null}
       <main className="overflow-x-clip">
         <Routes>
