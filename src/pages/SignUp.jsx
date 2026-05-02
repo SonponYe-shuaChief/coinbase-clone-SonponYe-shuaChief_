@@ -59,6 +59,19 @@ function SignUp() {
 				<form className="mt-8" onSubmit={handleSubmit}>
 					{notice ? <p className="mb-4 rounded-2xl border border-sky-500/40 bg-sky-500/10 px-4 py-3 text-sm text-sky-200">{notice}</p> : null}
 					{error ? <p className="mb-4 rounded-2xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">{error}</p> : null}
+					<label htmlFor="signup-name" className="block text-sm font-semibold text-white">
+						Full name
+					</label>
+					<input
+						id="signup-name"
+						type="text"
+						placeholder="Your full name"
+						value={name}
+						onChange={(event) => setName(event.target.value)}
+						required
+						className="mt-2 h-16 w-full rounded-2xl border border-[#2b3548] bg-transparent px-5 text-3xl font-medium text-white placeholder:text-slate-500 outline-none ring-[#2f63f2] focus:ring-2"
+					/>
+
 					<label htmlFor="signup-email" className="block text-sm font-semibold text-white">
 						Email
 					</label>
@@ -71,6 +84,10 @@ function SignUp() {
 						required
 						className="mt-2 h-16 w-full rounded-2xl border border-[#2b3548] bg-transparent px-5 text-3xl font-medium text-white placeholder:text-slate-500 outline-none ring-[#2f63f2] focus:ring-2"
 					/>
+
+					<p className="mt-3 text-xs leading-5 text-slate-400">
+						Use a real name or a classroom test name. The backend requires all signup fields to be filled.
+					</p>
 
 					<label htmlFor="signup-password" className="mt-5 block text-sm font-semibold text-white">
 						Password
