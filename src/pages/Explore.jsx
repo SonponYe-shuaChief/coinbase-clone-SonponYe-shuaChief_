@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { cryptoApi, normalizeCryptoCollection } from "../api/client";
+import { useAuth } from "../context/AuthContext";
 import useCryptoData from "../hooks/useCryptoData";
+import Button from "../components/common/Button";
 
 function Sparkline({ points, color = "#ef4444", height = 28 }) {
 	const width = 92;
@@ -36,6 +38,7 @@ function Explore() {
 	const [search, setSearch] = useState("");
 	const [gainers, setGainers] = useState([]);
 	const [newCoins, setNewCoins] = useState([]);
+	const { isAuthenticated } = useAuth();
 	const allCoins = useCryptoData("", "price");
 
 	// Derive table rows from the search query while keeping original data immutable.
@@ -175,6 +178,13 @@ function Explore() {
 								</p>
 								<button type="button" className="mt-1 text-[12px] font-semibold text-[#1652f0]">Read more</button>
 							</div>
+							{isAuthenticated ? (
+								<Link to="/crypto/add">
+									<Button className="rounded-full bg-[#1652f0] px-6 py-2 text-sm hover:bg-[#1346ce]">
+										+ Add Crypto
+									</Button>
+								</Link>
+							) : null}
 						</div>
 
 						<div className="mt-4 flex flex-wrap gap-2">

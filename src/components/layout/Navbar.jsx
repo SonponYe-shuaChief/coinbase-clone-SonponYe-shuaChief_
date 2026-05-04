@@ -576,9 +576,12 @@ const NavBar = () => {
 
           {user ? (
             <>
-              <div className="hidden md:block rounded-full bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-700">
+              <Link
+                to="/profile"
+                className="hidden md:block rounded-full bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-200 transition-colors"
+              >
                 {user.name || user.email}
-              </div>
+              </Link>
               <button
                 type="button"
                 onClick={async () => {

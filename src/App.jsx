@@ -3,12 +3,15 @@ import { useLocation } from "react-router-dom";
 import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
 import WarningBanner from "./components/common/WarningBanner";
+import ProtectedRoute from "./components/common/ProtectedRoute";
 import AssetDetail from "./pages/AssetDetail";
 import Explore from "./pages/Explore";
 import Home from "./pages/Home";
 import Learn from "./pages/Learn";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Profile from "./pages/Profile";
+import AddCrypto from "./pages/AddCrypto";
 
 function App() {
   const { pathname } = useLocation();
@@ -27,6 +30,22 @@ function App() {
           <Route path="/learn" element={<Learn />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/crypto/add"
+            element={
+              <ProtectedRoute>
+                <AddCrypto />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </main>
       {!isAuthRoute ? <Footer /> : null}
