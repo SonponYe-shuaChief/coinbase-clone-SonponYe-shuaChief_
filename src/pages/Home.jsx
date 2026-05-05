@@ -1,4 +1,5 @@
-import { Link, useState, useEffect } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 import useCryptoData from "../hooks/useCryptoData";
 import { cryptoApi, normalizeCryptoCollection } from "../api/client";
