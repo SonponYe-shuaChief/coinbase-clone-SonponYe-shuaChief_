@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
-import useCryptoData from "../hooks/useCryptoData";
 import { cryptoApi, normalizeCryptoCollection } from "../api/client";
 import heroPhoneDashboard from "../assets/images/imgi_33_Hero__4_.png";
 import learnPromoImage from "../assets/images/imgi_39_CB_LOLP__1_.png";
@@ -18,6 +17,10 @@ function Home() {
 	const [activeCategory, setActiveCategory] = useState("tradable");
 	const [market, setMarket] = useState([]);
 	const [loading, setLoading] = useState(false);
+
+	const handleTradableClick = () => setActiveCategory("tradable");
+	const handleTopGainersClick = () => setActiveCategory("gainers");
+	const handleNewOnCoinbaseClick = () => setActiveCategory("new");
 
 	useEffect(() => {
 		const fetchMarketData = async () => {
@@ -120,7 +123,9 @@ function Home() {
 					<div className="rounded-[40px] bg-[#050a12] px-5 py-6 text-white shadow-2xl sm:px-8 sm:py-8">
 						<div className="mb-7 flex flex-wrap gap-3 text-base font-semibold sm:text-lg">
 							<button
-								onClick={() => setActiveCategory("tradable")}
+												type="button"
+												onClick={handleTradableClick}
+												aria-pressed={activeCategory === "tradable"}
 								className={`rounded-full px-5 py-2 transition-colors ${
 									activeCategory === "tradable"
 										? "bg-slate-700 text-white"
@@ -130,7 +135,9 @@ function Home() {
 								Tradable
 							</button>
 							<button
-								onClick={() => setActiveCategory("gainers")}
+								type="button"
+								onClick={handleTopGainersClick}
+								aria-pressed={activeCategory === "gainers"}
 								className={`px-3 py-2 transition-colors ${
 									activeCategory === "gainers"
 										? "rounded-full bg-slate-700 text-white"
@@ -140,7 +147,9 @@ function Home() {
 								Top gainers
 							</button>
 							<button
-								onClick={() => setActiveCategory("new")}
+								type="button"
+								onClick={handleNewOnCoinbaseClick}
+								aria-pressed={activeCategory === "new"}
 								className={`px-3 py-2 transition-colors ${
 									activeCategory === "new"
 										? "rounded-full bg-slate-700 text-white"
