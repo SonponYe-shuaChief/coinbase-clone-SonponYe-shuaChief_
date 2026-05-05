@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useState, useEffect } from "react-router-dom";
 import Button from "../components/common/Button";
 import useCryptoData from "../hooks/useCryptoData";
+import { cryptoApi, normalizeCryptoCollection } from "../api/client";
 import heroPhoneDashboard from "../assets/images/imgi_33_Hero__4_.png";
 import learnPromoImage from "../assets/images/imgi_39_CB_LOLP__1_.png";
 import advancedToolsCard from "../assets/images/imgi_53_Advanced.png";
@@ -13,7 +14,35 @@ import TakeControl from "../assets/images/take control of your money image.png";
 import feature from "../assets/images/featured section image.png";
 
 function Home() {
-	const market = useCryptoData("", "price").slice(0, 6);
+	const [activeCategory, setActiveCategory] = useState("tradable");
+	const [market, setMarket] = useState([]);
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		const fetchMarketData = async () => {
+			setLoading(true);
+			try {
+				let data;
+				if (activeCategory === "gainers") {
+					data = await cryptoApi.getGainers();
+				} else if (activeCategory === "new") {
+					data = await cryptoApi.getNew();
+				} else {
+					// tradable
+					data = await cryptoApi.getAll();
+				}
+				const normalized = normalizeCryptoCollection(data).slice(0, 6);
+				setMarket(normalized);
+			} catch (error) {
+				console.error("Failed to fetch market data:", error);
+				setMarket([]);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchMarketData();
+	}, [activeCategory]);
 	const learnCards = [
 		{
 			id: "usdc",
@@ -89,28 +118,61 @@ function Home() {
 
 					<div className="rounded-[40px] bg-[#050a12] px-5 py-6 text-white shadow-2xl sm:px-8 sm:py-8">
 						<div className="mb-7 flex flex-wrap gap-3 text-base font-semibold sm:text-lg">
-							<span className="rounded-full bg-slate-700 px-5 py-2">Tradable</span>
-							<span className="px-3 py-2 text-slate-200">Top gainers</span>
-							<span className="px-3 py-2 text-slate-200">New on Coinbase</span>
+							<button
+								onClick={() => setActiveCategory("tradable")}
+								className={`rounded-full px-5 py-2 transition-colors ${
+									activeCategory === "tradable"
+										? "bg-slate-700 text-white"
+										: "bg-transparent text-slate-200 hover:text-white"
+								}`}
+							>
+								Tradable
+							</button>
+							<button
+								onClick={() => setActiveCategory("gainers")}
+								className={`px-3 py-2 transition-colors ${
+									activeCategory === "gainers"
+										? "rounded-full bg-slate-700 text-white"
+										: "text-slate-200 hover:text-white"
+								}`}
+							>
+								Top gainers
+							</button>
+							<button
+								onClick={() => setActiveCategory("new")}
+								className={`px-3 py-2 transition-colors ${
+									activeCategory === "new"
+										? "rounded-full bg-slate-700 text-white"
+										: "text-slate-200 hover:text-white"
+								}`}
+							>
+								New on Coinbase
+							</button>
 						</div>
 
 						<div className="space-y-7">
-							{market.map((coin) => (
-								<div key={coin.id} className="flex items-center justify-between gap-4">
-									<div className="flex items-center gap-4">
-										<span className="grid h-11 w-11 place-items-center rounded-full bg-slate-800 text-sm font-bold uppercase text-slate-200">
-											{coin.symbol.slice(0, 1)}
-										</span>
-										<p className="text-4xl font-medium tracking-tight">{coin.name}</p>
+							{loading ? (
+								<p className="py-4 text-center text-slate-300">Loading {activeCategory}...</p>
+							) : market.length > 0 ? (
+								market.map((coin) => (
+									<div key={coin.id} className="flex items-center justify-between gap-4">
+										<div className="flex items-center gap-4">
+											<span className="grid h-11 w-11 place-items-center rounded-full bg-slate-800 text-sm font-bold uppercase text-slate-200">
+												{coin.symbol.slice(0, 1)}
+											</span>
+											<p className="text-4xl font-medium tracking-tight">{coin.name}</p>
+										</div>
+										<div className="text-right">
+											<p className="text-4xl font-medium tracking-tight">GHS {coin.ghsPrice}</p>
+											<p className={`text-2xl ${coin.change24h >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+												{coin.change24h >= 0 ? "/" : "\\"} {Math.abs(coin.change24h).toFixed(2)}%
+											</p>
+										</div>
 									</div>
-									<div className="text-right">
-										<p className="text-4xl font-medium tracking-tight">GHS {coin.ghsPrice}</p>
-										<p className={`text-2xl ${coin.change24h >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-											{coin.change24h >= 0 ? "/" : "\\"} {Math.abs(coin.change24h).toFixed(2)}%
-										</p>
-									</div>
-								</div>
-							))}
+								))
+							) : (
+								<p className="py-4 text-center text-slate-300">No data available</p>
+							)}
 						</div>
 					</div>
 				</div>
